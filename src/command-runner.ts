@@ -20,9 +20,24 @@ export type RawOptions =
  * Global options for each CommandRunner instance
  */
 export interface CommandRunnerOptions {
+	/**
+	 * Directory to run commands in
+	 */
 	dir?: string;
+
+	/**
+	 * Log instance
+	 */
 	log?: LogContract;
+
+	/**
+	 * Raw options for each command
+	 */
 	rawOptions?: RawOptions;
+
+	/**
+	 * Enable verbose logging
+	 */
 	verbose?: boolean;
 }
 
