@@ -8,12 +8,6 @@ import { Log, LogContract } from 'ts-tiny-log';
 import { LogLevel } from 'ts-tiny-log/levels';
 import { join as pathJoin } from 'path';
 
-export interface CommandRunnerOptions {
-	dir?: string;
-	log?: LogContract;
-	verbose?: boolean;
-}
-
 /**
  * Raw options to be passed to execSync
  */
@@ -21,6 +15,16 @@ export type RawOptions =
 	| ExecSyncOptions
 	| ExecSyncOptionsWithStringEncoding
 	| ExecSyncOptionsWithBufferEncoding;
+
+/**
+ * Global options for each CommandRunner instance
+ */
+export interface CommandRunnerOptions {
+	dir?: string;
+	log?: LogContract;
+	rawOptions?: RawOptions;
+	verbose?: boolean;
+}
 
 /**
  * Allowed return values
