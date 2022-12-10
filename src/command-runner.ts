@@ -9,7 +9,7 @@ import { LogLevel } from 'ts-tiny-log/levels';
 import { join as pathJoin } from 'path';
 
 export interface CommandRunnerOptions {
-	cwd?: string;
+	dir?: string;
 	log?: LogContract;
 	verbose?: boolean;
 }
@@ -69,7 +69,7 @@ export class CommandRunner {
 	/**
 	 * Current working directory
 	 */
-	public cwd: string = process.cwd();
+	public dir: string = process.cwd();
 
 	/**
 	 * Logger
@@ -92,8 +92,8 @@ export class CommandRunner {
 	 * @param options (Optional) Command runner options
 	 */
 	public constructor(options: CommandRunnerOptions = {}) {
-		if (options.cwd) {
-			this.cwd = options.cwd;
+		if (options.dir) {
+			this.dir = options.dir;
 		}
 
 		if (options.log) {
@@ -136,7 +136,7 @@ export class CommandRunner {
 		const execOptions: ExecSyncOptions = {
 			encoding: 'utf8',
 			stdio: 'pipe',
-			cwd: options.dir ? pathJoin(this.cwd, options.dir) : this.cwd,
+			cwd: options.dir ? pathJoin(this.dir, options.dir) : this.dir,
 			...this.rawOptions,
 			...(options.rawOptions || {}),
 		};
