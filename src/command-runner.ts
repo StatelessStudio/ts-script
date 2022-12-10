@@ -64,6 +64,11 @@ export interface RunOptions {
 	 * Raw options for execSync
 	 */
 	rawOptions?: RawOptions;
+
+	/**
+	 * Enable verbose logging?
+	 */
+	verbose?: boolean;
 }
 
 /**
@@ -155,8 +160,12 @@ export class CommandRunner {
 				results = cmd();
 			}
 
-			if (results !== undefined && results !== null) {
-				this.log.debug(results);
+			if (
+				(this.verbose || options.verbose) &&
+				results !== undefined &&
+				results !== null
+			) {
+				console.log(results);
 			}
 
 			if (options.finishedDescription) {
