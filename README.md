@@ -1,38 +1,46 @@
 # ts-script - Readme
 
-## Development
+Command runner for creating typescript scripts
 
-Run a dev test with `npm start`.
+## Installation
 
-## Running Tests
+`npm i ts-script`
 
-To run unit tests, `npm run test`
+## Usage
 
-## Scripts
+```typescript
+import { CommandRunner } from 'ts-script';
 
-You can write custom scripts in the `script/` directory. See `script/example.ts` as an example.
+const cmd = new CommandRunner();
 
-Run your script with `npm run script -- example`
+// Sync
+cmd.run('echo "Hello!"');
 
-## Compiling
+// Async
+cmd.runAsyc('echo "Hello!"')
+	.
+```
 
-### Debug Builds
+## Class Options
 
-To compile a debug build, run `npm run build`. The build output will appear in the `./dist` folder.
+All options are optional.
 
-### Prod Builds
+**dir** - Specify a directory for each command to run in. Default is current working dir.
 
-To compile a production build, run `npm run lint:prod && npm run build`. The build output will appear in the `./dist` folder.
+**log** - ts-tiny-log compatible log instance. Defaults to a basic instance
 
-## More
+**rawOptions** - Raw options to pass along to execSync. See https://nodejs.org/api/child_process.html#child_processexecsynccommand-options
 
-### Generating Docs
+**verbose** - Enable verbose logging. Defaults to false
 
-`npm run doc` and browse docs/index.html!
+## Run Options
 
-### Deploying to npm
+**dir** - Specify a directory for this command to run in. Should be a relative directory based on class dir
 
-1. Did you bump your version?
-2. `npm run publish`
+**loadingDescription** - Output text before command starts, (e.g. "Initializing Rocket Ship")
 
-You can test your build by running `npm run script -- pack`
+**finishedDescription** - Output text after command runs successfully (e.g. "Rocket Ship Initialized")
+
+**rawOptions** - Raw options to pass along to execSync. See https://nodejs.org/api/child_process.html#child_processexecsynccommand-options
+
+**verbose** - Enable verbose logging. Defaults to false
