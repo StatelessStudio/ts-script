@@ -1,8 +1,8 @@
 import 'jasmine';
-import * as index from '../../src';
+import * as index from '../../src/command-runner';
 
 describe('ts-script', () => {
-	it('exports a', () => {
-		expect(index.a).toBeTrue();
+	it('exports CommandRunner', () => {
+		expect(index.CommandRunner).toBeDefined();
 	});
 });
