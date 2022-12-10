@@ -61,7 +61,7 @@ export type RunnableAsync = string | (() => Promise<RunnableReturnValue>);
  */
 export interface RunOptions {
 	/**
-	 * Relative directory to run the command (relative to )
+	 * Relative directory to run the command (relative to class dir)
 	 */
 	dir?: string;
 
